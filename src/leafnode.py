@@ -13,6 +13,3 @@ class LeafNode(HTMLNode):
             return self.value
 
         return f"<{self.tag}{self.props_to_html()}>{self.value}</{self.tag}>"
-
-
-leaf_node = LeafNode("a", "Click me!", {"href": "https://www.google.com"})
