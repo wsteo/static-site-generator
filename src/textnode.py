@@ -42,13 +42,24 @@ def text_node_to_html_node(text_node):
         return leaf_node
 
     if text_node.text_type == TextType.ITALIC:
-        pass
+        html_node = HTMLNode("i", text_node.text)
+        return html_node
 
     if text_node.text_type == TextType.CODE:
-        pass
+        html_node = HTMLNode("code", text_node.text)
+        return html_node
 
     if text_node.text_type == TextType.LINK:
-        pass
+        html_node = HTMLNode(
+            "a", text_node.text, children=None, props={"href": text_node.url}
+        )
+        return html_node
 
     if text_node.text_type == TextType.IMAGE:
-        pass
+        html_node = HTMLNode(
+            "img",
+            value=None,
+            children=None,
+            props={"src": text_node.url, "alt": text_node.text},
+        )
+        return html_node
