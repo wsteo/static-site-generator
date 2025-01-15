@@ -1,6 +1,6 @@
 import unittest
 
-from nodeconverter import *
+from inline_markdown import *
 
 
 class TestNodeConverter(unittest.TestCase):
