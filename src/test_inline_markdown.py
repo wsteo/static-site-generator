@@ -58,6 +58,22 @@ class TestNodeConverter(unittest.TestCase):
         node = TextNode("This is text with a `code block` word", TextType.TEXT)
         self.assertRaises(Exception, split_nodes_delimiter, [node], ".", TextType.CODE)
 
+    def test_extract_markdown_images(self):
+        text_images = "This is text with a ![rick roll](https://i.imgur.com/aKaOqIh.gif) and ![obi wan](https://i.imgur.com/fJRm4Vk.jpeg)"
+        result = [
+            ("rick roll", "https://i.imgur.com/aKaOqIh.gif"),
+            ("obi wan", "https://i.imgur.com/fJRm4Vk.jpeg"),
+        ]
+        assert extract_markdown_images(text_images) == result
+
+    def text_extract_markdown_links(self):
+        text_links = "This is text with a link [to boot dev](https://www.boot.dev) and [to youtube](https://www.youtube.com/@bootdotdev)"
+        result = [
+            ("to boot dev", "https://www.boot.dev"),
+            ("to youtube", "https://www.youtube.com/@bootdotdev"),
+        ]
+        assert extract_markdown_links(text_links) == result
+
 
 if __name__ == "__main__":
     unittest.main()
